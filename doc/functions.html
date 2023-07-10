@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module functions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>functions</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/paulius/pCloud%20Drive/00_Darbai/KTU/01_Straipsniai/2023_SoftwareX/queueing-systems/queueing_systems/functions.py">/Users/paulius/pCloud Drive/00_Darbai/KTU/01_Straipsniai/2023_SoftwareX/queueing-systems/queueing_systems/functions.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-msqs"><strong>msqs</strong></a>(ar, sn, qs=None, sr1=None, s1=None, vs=None)</dt><dd><tt>This&nbsp;function&nbsp;calculates&nbsp;parameters&nbsp;of&nbsp;multi-server&nbsp;queueing&nbsp;systems.&nbsp;<br>
+&nbsp;<br>
+A&nbsp;multi-server&nbsp;queueing&nbsp;system&nbsp;is&nbsp;considered,&nbsp;where&nbsp;the&nbsp;arrival&nbsp;rate&nbsp;is&nbsp;evenly&nbsp;<br>
+distributed&nbsp;among&nbsp;the&nbsp;servers&nbsp;upon&nbsp;arrival&nbsp;to&nbsp;the&nbsp;system.&nbsp;The&nbsp;function&nbsp;returns&nbsp;<br>
+the&nbsp;parameters&nbsp;specific&nbsp;to&nbsp;a&nbsp;single&nbsp;server&nbsp;within&nbsp;the&nbsp;multi-server&nbsp;system.&nbsp;<br>
+It&nbsp;assumes&nbsp;that&nbsp;all&nbsp;servers&nbsp;in&nbsp;the&nbsp;system&nbsp;are&nbsp;identical.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+ar&nbsp;:&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Arrival&nbsp;rate.<br>
+sn&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;servers<br>
+sr1&nbsp;:&nbsp;float,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Single&nbsp;server&nbsp;service&nbsp;rate.&nbsp;Optional&nbsp;if&nbsp;s1&nbsp;is&nbsp;given.<br>
+qs&nbsp;:&nbsp;str,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Type&nbsp;of&nbsp;queueing&nbsp;system&nbsp;according&nbsp;Kendall's&nbsp;notations.&nbsp;By&nbsp;default&nbsp;"MM1"&nbsp;or&nbsp;None<br>
+&nbsp;&nbsp;&nbsp;&nbsp;With&nbsp;this&nbsp;function&nbsp;only&nbsp;such&nbsp;systems&nbsp;can&nbsp;be&nbsp;analysed:&nbsp;"MM1",&nbsp;"MD1",&nbsp;"MG1","DM1","DD1","DG1".&nbsp;Defaults&nbsp;"MM1".<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Examples&nbsp;of&nbsp;accepted&nbsp;formats:&nbsp;"mm1",&nbsp;"MM1",&nbsp;"m/m/1",&nbsp;"M/M/1"&nbsp;<br>
+s1&nbsp;:&nbsp;float,&nbsp;optional&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Mean&nbsp;service&nbsp;time&nbsp;in&nbsp;single&nbsp;server.&nbsp;Optional&nbsp;if&nbsp;sr1&nbsp;is&nbsp;given.<br>
+vs&nbsp;:&nbsp;float,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Variance&nbsp;of&nbsp;service&nbsp;time.&nbsp;Must&nbsp;be&nbsp;provided&nbsp;only&nbsp;for&nbsp;"MG1"&nbsp;type&nbsp;system.&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+result&nbsp;:&nbsp;list&nbsp;of&nbsp;dictionaries&nbsp;for&nbsp;each&nbsp;server&nbsp;with&nbsp;such&nbsp;keys:<br>
+'qs'&nbsp;-&nbsp;queueing&nbsp;system&nbsp;notation<br>
+'w'&nbsp;-&nbsp;the&nbsp;mean&nbsp;total&nbsp;time&nbsp;in&nbsp;system<br>
+'wq'&nbsp;-&nbsp;the&nbsp;mean&nbsp;waiting&nbsp;time&nbsp;in&nbsp;queue<br>
+'u'&nbsp;-&nbsp;the&nbsp;utilization&nbsp;of&nbsp;the&nbsp;system<br>
+'ar'&nbsp;-&nbsp;arrival&nbsp;rate<br>
+'sr'&nbsp;-&nbsp;service&nbsp;rate<br>
+'l'&nbsp;-&nbsp;mean&nbsp;number&nbsp;of&nbsp;entities&nbsp;in&nbsp;the&nbsp;system<br>
+'lq'&nbsp;-&nbsp;mean&nbsp;number&nbsp;of&nbsp;entities&nbsp;in&nbsp;the&nbsp;queue<br>
+'a'&nbsp;-&nbsp;mean&nbsp;inter-arrival&nbsp;time<br>
+'s'&nbsp;-&nbsp;mean&nbsp;service&nbsp;time<br>
+'va'&nbsp;-&nbsp;variance&nbsp;of&nbsp;inter-arrival&nbsp;time<br>
+'vs'&nbsp;-&nbsp;variance&nbsp;of&nbsp;service&nbsp;time<br>
+&nbsp;<br>
+Example<br>
+-------<br>
+&gt;&gt;&gt;&nbsp;result&nbsp;=&nbsp;<a href="#-msqs">msqs</a>(ar=10,&nbsp;sn=5,&nbsp;sr1=4)<br>
+&gt;&gt;&gt;&nbsp;print(result)<br>
+&gt;&gt;&gt;&nbsp;{'qs':&nbsp;'mm1',&nbsp;'w':&nbsp;0.5,&nbsp;'wq':&nbsp;0.25,&nbsp;'u':&nbsp;0.5,&nbsp;'ar':&nbsp;2.0,&nbsp;'sr':&nbsp;4.0,&nbsp;'l':&nbsp;1.0,&nbsp;'lq':&nbsp;0.5,&nbsp;'a':&nbsp;0.5,&nbsp;'s':&nbsp;0.25,&nbsp;'va':&nbsp;0.25,&nbsp;'vs':&nbsp;0.0625}</tt></dd></dl>
+ <dl><dt><a name="-msqsa"><strong>msqsa</strong></a>(ar, pl, sl)</dt><dd><tt>This&nbsp;function&nbsp;provides&nbsp;advanced&nbsp;estimation&nbsp;for&nbsp;parameters&nbsp;of&nbsp;multi-server&nbsp;queueing&nbsp;systems.&nbsp;<br>
+&nbsp;<br>
+The&nbsp;arrival&nbsp;rate&nbsp;is&nbsp;distributed&nbsp;based&nbsp;on&nbsp;a&nbsp;provided&nbsp;list&nbsp;of&nbsp;probabilities.&nbsp;<br>
+Each&nbsp;server&nbsp;in&nbsp;the&nbsp;system&nbsp;can&nbsp;have&nbsp;distinct&nbsp;characteristics.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+ar&nbsp;:&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Arrival&nbsp;rate&nbsp;to&nbsp;the&nbsp;multi-server&nbsp;system.<br>
+pl&nbsp;:&nbsp;float,&nbsp;array&nbsp;like<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;input&nbsp;is&nbsp;an&nbsp;array&nbsp;or&nbsp;list&nbsp;that&nbsp;represents&nbsp;the&nbsp;probability&nbsp;distribution&nbsp;of&nbsp;the&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;arrival&nbsp;rate&nbsp;between&nbsp;servers&nbsp;in&nbsp;the&nbsp;system.<br>
+sl&nbsp;:&nbsp;dict<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;input&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;dictionaries&nbsp;where&nbsp;each&nbsp;dictionary&nbsp;represents&nbsp;the&nbsp;parameters&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;a&nbsp;server&nbsp;in&nbsp;the&nbsp;queueing&nbsp;system.&nbsp;The&nbsp;main&nbsp;server&nbsp;parameters&nbsp;align&nbsp;with&nbsp;those&nbsp;used&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;in&nbsp;the&nbsp;'ssqs'&nbsp;function.&nbsp;Additionally,&nbsp;it&nbsp;is&nbsp;possible&nbsp;to&nbsp;assign&nbsp;additional&nbsp;and&nbsp;custom&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;parameters&nbsp;to&nbsp;each&nbsp;server.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Additional&nbsp;and&nbsp;optional&nbsp;parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'i'&nbsp;-&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Info&nbsp;text&nbsp;to&nbsp;describe&nbsp;the&nbsp;server.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'c'&nbsp;-&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Server&nbsp;cost.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'r'&nbsp;-&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;limit&nbsp;or&nbsp;maximum&nbsp;capacity&nbsp;of&nbsp;expendable&nbsp;resources&nbsp;when&nbsp;a&nbsp;server&nbsp;is&nbsp;being&nbsp;utilized.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+result&nbsp;:&nbsp;list&nbsp;of&nbsp;dictionaries&nbsp;for&nbsp;each&nbsp;server&nbsp;with&nbsp;such&nbsp;keys:<br>
+'qs'&nbsp;-&nbsp;queueing&nbsp;system&nbsp;notation<br>
+'w'&nbsp;-&nbsp;the&nbsp;mean&nbsp;total&nbsp;time&nbsp;in&nbsp;system<br>
+'wq'&nbsp;-&nbsp;the&nbsp;mean&nbsp;waiting&nbsp;time&nbsp;in&nbsp;queue<br>
+'u'&nbsp;-&nbsp;the&nbsp;utilization&nbsp;of&nbsp;the&nbsp;system<br>
+'ar'&nbsp;-&nbsp;arrival&nbsp;rate&nbsp;to&nbsp;the&nbsp;server<br>
+'sr'&nbsp;-&nbsp;service&nbsp;rate<br>
+'l'&nbsp;-&nbsp;mean&nbsp;number&nbsp;of&nbsp;entities&nbsp;in&nbsp;the&nbsp;system<br>
+'lq'&nbsp;-&nbsp;mean&nbsp;number&nbsp;of&nbsp;entities&nbsp;in&nbsp;the&nbsp;queue<br>
+'a'&nbsp;-&nbsp;mean&nbsp;inter-arrival&nbsp;time<br>
+'s'&nbsp;-&nbsp;mean&nbsp;service&nbsp;time<br>
+'va'&nbsp;-&nbsp;variance&nbsp;of&nbsp;inter-arrival&nbsp;time<br>
+'vs'&nbsp;-&nbsp;variance&nbsp;of&nbsp;service&nbsp;time<br>
+'p'&nbsp;-&nbsp;probability&nbsp;of&nbsp;arrival&nbsp;rate&nbsp;distribution&nbsp;to&nbsp;the&nbsp;server<br>
+'c'&nbsp;-&nbsp;cost&nbsp;(if&nbsp;provided&nbsp;in&nbsp;'sl')<br>
+'cu'&nbsp;-&nbsp;cost&nbsp;if&nbsp;it&nbsp;depends&nbsp;on&nbsp;utilization&nbsp;(if&nbsp;'c'&nbsp;provided&nbsp;in&nbsp;'sl')<br>
+'r'&nbsp;-&nbsp;ammount&nbsp;of&nbsp;expendable&nbsp;resources&nbsp;of&nbsp;the&nbsp;server&nbsp;('if&nbsp;'r'&nbsp;provided&nbsp;in&nbsp;'sl')<br>
+'rt'&nbsp;-&nbsp;time&nbsp;interval&nbsp;between&nbsp;refills&nbsp;of&nbsp;expendable&nbsp;resources&nbsp;('if&nbsp;'r'&nbsp;provided&nbsp;in&nbsp;'sl')<br>
+'i'&nbsp;-&nbsp;info&nbsp;(if&nbsp;provided&nbsp;in&nbsp;'sl')<br>
+&nbsp;<br>
+Example<br>
+-------<br>
+&gt;&gt;&gt;&nbsp;pl&nbsp;=&nbsp;[0.4,0.6]<br>
+&gt;&gt;&gt;&nbsp;sl&nbsp;=&nbsp;[{'qs':'md1','sr':1},{'qs':'mg1','sr':1,'vs':0.1}]<br>
+&gt;&gt;&gt;&nbsp;result&nbsp;=&nbsp;msqs2(ar=1,pl=pl,sl=sl)<br>
+&gt;&gt;&gt;&nbsp;print(result)&nbsp;<br>
+&gt;&gt;&gt;&nbsp;[{'qs':&nbsp;'md1',&nbsp;'w':&nbsp;1.5,&nbsp;'wq':&nbsp;0.5,&nbsp;'u':&nbsp;0.5,&nbsp;'ar':&nbsp;0.5,&nbsp;'sr':&nbsp;1.0,&nbsp;'l':&nbsp;0.75,&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'lq':&nbsp;0.25,&nbsp;'a':&nbsp;2.0,&nbsp;'s':&nbsp;1.0,&nbsp;'va':&nbsp;4.0,&nbsp;'vs':&nbsp;0,&nbsp;'p':&nbsp;0.5},&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{'qs':&nbsp;'mg1',&nbsp;'w':&nbsp;1.5615,&nbsp;'wq':&nbsp;0.5615,&nbsp;'u':&nbsp;0.5,&nbsp;'ar':&nbsp;0.5,&nbsp;'sr':&nbsp;1.0,&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'l':&nbsp;0.78075,&nbsp;'lq':&nbsp;0.28075,&nbsp;'a':&nbsp;2.0,&nbsp;'s':&nbsp;1.0,&nbsp;'va':&nbsp;4.0,&nbsp;'vs':&nbsp;0.123,&nbsp;'p':&nbsp;0.5}]</tt></dd></dl>
+ <dl><dt><a name="-ssqs"><strong>ssqs</strong></a>(**parameters)</dt><dd><tt>This&nbsp;function&nbsp;calculates&nbsp;the&nbsp;parameters&nbsp;of&nbsp;various&nbsp;single-server&nbsp;queueing&nbsp;systems.<br>
+&nbsp;<br>
+A&nbsp;queueing&nbsp;system&nbsp;is&nbsp;considered&nbsp;stable&nbsp;when&nbsp;the&nbsp;arrival&nbsp;rate&nbsp;is&nbsp;lower&nbsp;than&nbsp;the&nbsp;service&nbsp;rate.&nbsp;<br>
+If&nbsp;the&nbsp;parameters&nbsp;are&nbsp;incorrect&nbsp;or&nbsp;missing,&nbsp;exceptions&nbsp;will&nbsp;be&nbsp;raised&nbsp;to&nbsp;alert&nbsp;the&nbsp;user.&nbsp;<br>
+Additionally,&nbsp;certain&nbsp;input&nbsp;parameters&nbsp;are&nbsp;optional&nbsp;and&nbsp;can&nbsp;be&nbsp;automatically&nbsp;calculated&nbsp;based&nbsp;on&nbsp;the&nbsp;selected&nbsp;system&nbsp;type.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+**parameters&nbsp;:&nbsp;(keyword&nbsp;arguments)<br>
+qs&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Type&nbsp;of&nbsp;queueing&nbsp;system&nbsp;according&nbsp;Kendall's&nbsp;notations:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"MM1",&nbsp;"MD1",&nbsp;"MG1",&nbsp;"DM1","DG1","DD1","GM1","GD1".&nbsp;Defaults&nbsp;"MM1".<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Examples&nbsp;of&nbsp;accepted&nbsp;formats:&nbsp;"mm1",&nbsp;"MM1",&nbsp;"m/m/1",&nbsp;"M/M/1"&nbsp;<br>
+ar&nbsp;:&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Arrival&nbsp;rate.&nbsp;Optional&nbsp;if&nbsp;mean&nbsp;inter-arrival&nbsp;time&nbsp;is&nbsp;given.&nbsp;&nbsp;&nbsp;<br>
+sr&nbsp;:&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Service&nbsp;rate.&nbsp;Optional&nbsp;if&nbsp;mean&nbsp;service&nbsp;time&nbsp;is&nbsp;given.<br>
+a&nbsp;:&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Mean&nbsp;inter-arrival&nbsp;time.&nbsp;Optional&nbsp;if&nbsp;arrival&nbsp;rate&nbsp;is&nbsp;given.<br>
+s&nbsp;:&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Mean&nbsp;service&nbsp;time.&nbsp;Optional&nbsp;if&nbsp;service&nbsp;rate&nbsp;is&nbsp;given.<br>
+va&nbsp;:&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Variance&nbsp;of&nbsp;inter-arrival&nbsp;time.&nbsp;Must&nbsp;be&nbsp;provided&nbsp;only&nbsp;for&nbsp;"GM1","GD1","GG1"&nbsp;type&nbsp;systems.<br>
+vs&nbsp;:&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Variance&nbsp;of&nbsp;service&nbsp;time.&nbsp;Must&nbsp;be&nbsp;provided&nbsp;only&nbsp;for&nbsp;"MG1","DG1","GG1"&nbsp;type&nbsp;systems.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+result&nbsp;:&nbsp;dictionary&nbsp;with&nbsp;such&nbsp;keys<br>
+'qs'&nbsp;-&nbsp;queueing&nbsp;system&nbsp;notation<br>
+'w'&nbsp;-&nbsp;the&nbsp;mean&nbsp;total&nbsp;time&nbsp;in&nbsp;system<br>
+'wq'&nbsp;-&nbsp;the&nbsp;mean&nbsp;waiting&nbsp;time&nbsp;in&nbsp;queue<br>
+'u'&nbsp;-&nbsp;the&nbsp;utilization&nbsp;of&nbsp;the&nbsp;system<br>
+'ar'&nbsp;-&nbsp;arrival&nbsp;rate<br>
+'sr'&nbsp;-&nbsp;service&nbsp;rate<br>
+'l'&nbsp;-&nbsp;mean&nbsp;number&nbsp;of&nbsp;entities&nbsp;in&nbsp;the&nbsp;system<br>
+'lq'&nbsp;-&nbsp;mean&nbsp;number&nbsp;of&nbsp;entities&nbsp;in&nbsp;the&nbsp;queue<br>
+'a'&nbsp;-&nbsp;mean&nbsp;inter-arrival&nbsp;time<br>
+'s'&nbsp;-&nbsp;mean&nbsp;service&nbsp;time<br>
+'va'&nbsp;-&nbsp;variance&nbsp;of&nbsp;inter-arrival&nbsp;time<br>
+'vs'&nbsp;-&nbsp;variance&nbsp;of&nbsp;service&nbsp;time<br>
+&nbsp;<br>
+Example<br>
+-------<br>
+&gt;&gt;&gt;&nbsp;result&nbsp;=&nbsp;<a href="#-ssqs">ssqs</a>(qs='gg1',ar=10,va=0,s=0.01,vs=0.04)<br>
+&gt;&gt;&gt;&nbsp;print(result)<br>
+&gt;&gt;&gt;&nbsp;{'qs':&nbsp;'gg1',&nbsp;'w':&nbsp;0.18822222222222224,&nbsp;'wq':&nbsp;0.17822222222222223,&nbsp;'u':&nbsp;0.1,&nbsp;'ar':&nbsp;10.0,&nbsp;'sr':&nbsp;100.0,&nbsp;<br>
+'l':&nbsp;1.8822222222222225,&nbsp;'lq':&nbsp;1.7822222222222224,&nbsp;'a':&nbsp;0.1,&nbsp;'s':&nbsp;0.01,&nbsp;'va':&nbsp;0,&nbsp;'vs':&nbsp;0.04}</tt></dd></dl>
+</td></tr></table>
+</body></html>
