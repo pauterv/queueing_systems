@@ -8,7 +8,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>functions</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/paulius/pCloud%20Drive/00_Darbai/KTU/01_Straipsniai/2023_SoftwareX/queueing-systems/queueing_systems/functions.py">/Users/paulius/pCloud Drive/00_Darbai/KTU/01_Straipsniai/2023_SoftwareX/queueing-systems/queueing_systems/functions.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/paulius/pCloud%20Drive/00_Darbai/KTU/01_Straipsniai/2023_SoftwareX/queueing_systems/queueing_systems/functions.py">/Users/paulius/pCloud Drive/00_Darbai/KTU/01_Straipsniai/2023_SoftwareX/queueing_systems/queueing_systems/functions.py</a></font></td></tr></table>
     <p></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -45,17 +45,17 @@ Returns<br>
 -------<br>
 result&nbsp;:&nbsp;list&nbsp;of&nbsp;dictionaries&nbsp;for&nbsp;each&nbsp;server&nbsp;with&nbsp;such&nbsp;keys:<br>
 'qs'&nbsp;-&nbsp;queueing&nbsp;system&nbsp;notation<br>
-'w'&nbsp;-&nbsp;the&nbsp;mean&nbsp;total&nbsp;time&nbsp;in&nbsp;system<br>
-'wq'&nbsp;-&nbsp;the&nbsp;mean&nbsp;waiting&nbsp;time&nbsp;in&nbsp;queue<br>
-'u'&nbsp;-&nbsp;the&nbsp;utilization&nbsp;of&nbsp;the&nbsp;system<br>
 'ar'&nbsp;-&nbsp;arrival&nbsp;rate<br>
 'sr'&nbsp;-&nbsp;service&nbsp;rate<br>
-'l'&nbsp;-&nbsp;mean&nbsp;number&nbsp;of&nbsp;entities&nbsp;in&nbsp;the&nbsp;system<br>
-'lq'&nbsp;-&nbsp;mean&nbsp;number&nbsp;of&nbsp;entities&nbsp;in&nbsp;the&nbsp;queue<br>
 'a'&nbsp;-&nbsp;mean&nbsp;inter-arrival&nbsp;time<br>
-'s'&nbsp;-&nbsp;mean&nbsp;service&nbsp;time<br>
-'va'&nbsp;-&nbsp;variance&nbsp;of&nbsp;inter-arrival&nbsp;time<br>
-'vs'&nbsp;-&nbsp;variance&nbsp;of&nbsp;service&nbsp;time<br>
+'va'&nbsp;-&nbsp;variance&nbsp;of&nbsp;inter-arrival&nbsp;time&nbsp;<br>
+'s'&nbsp;-&nbsp;mean&nbsp;service&nbsp;time&nbsp;<br>
+'vs'&nbsp;-&nbsp;variance&nbsp;of&nbsp;service&nbsp;time&nbsp;<br>
+'u'&nbsp;-&nbsp;the&nbsp;utilization&nbsp;of&nbsp;the&nbsp;system&nbsp;<br>
+'l'&nbsp;-&nbsp;mean&nbsp;number&nbsp;of&nbsp;entities&nbsp;in&nbsp;the&nbsp;system<br>
+'lq'&nbsp;-&nbsp;mean&nbsp;number&nbsp;of&nbsp;entities&nbsp;in&nbsp;the&nbsp;queue&nbsp;&nbsp;&nbsp;&nbsp;<br>
+'w'&nbsp;-&nbsp;the&nbsp;mean&nbsp;waiting&nbsp;(total&nbsp;time)&nbsp;in&nbsp;system<br>
+'wq'&nbsp;-&nbsp;the&nbsp;mean&nbsp;waiting&nbsp;time&nbsp;in&nbsp;queue<br>
 &nbsp;<br>
 Example<br>
 -------<br>
@@ -125,6 +125,18 @@ A&nbsp;queueing&nbsp;system&nbsp;is&nbsp;considered&nbsp;stable&nbsp;when&nbsp;t
 If&nbsp;the&nbsp;parameters&nbsp;are&nbsp;incorrect&nbsp;or&nbsp;missing,&nbsp;exceptions&nbsp;will&nbsp;be&nbsp;raised&nbsp;to&nbsp;alert&nbsp;the&nbsp;user.&nbsp;<br>
 Additionally,&nbsp;certain&nbsp;input&nbsp;parameters&nbsp;are&nbsp;optional&nbsp;and&nbsp;can&nbsp;be&nbsp;automatically&nbsp;calculated&nbsp;based&nbsp;on&nbsp;the&nbsp;selected&nbsp;system&nbsp;type.<br>
 &nbsp;<br>
+==============================================================<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Single-Server&nbsp;&nbsp;Queueing&nbsp;System<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-----------------------------+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Arrival&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Server&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;Output&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;Queue&nbsp;&nbsp;&nbsp;&nbsp;+--------------+|&nbsp;(parameters)&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;arrival_rate&nbsp;|&nbsp;----------+&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;------------&gt;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;service_rate&nbsp;||&nbsp;------------&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;----------+&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+--------------+|&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-----------------------------+<br>
+==============================================================<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
 Parameters<br>
 ----------<br>
 **parameters&nbsp;:&nbsp;(keyword&nbsp;arguments)<br>
@@ -149,23 +161,23 @@ Returns<br>
 -------<br>
 result&nbsp;:&nbsp;dictionary&nbsp;with&nbsp;such&nbsp;keys<br>
 'qs'&nbsp;-&nbsp;queueing&nbsp;system&nbsp;notation<br>
-'w'&nbsp;-&nbsp;the&nbsp;mean&nbsp;total&nbsp;time&nbsp;in&nbsp;system<br>
-'wq'&nbsp;-&nbsp;the&nbsp;mean&nbsp;waiting&nbsp;time&nbsp;in&nbsp;queue<br>
-'u'&nbsp;-&nbsp;the&nbsp;utilization&nbsp;of&nbsp;the&nbsp;system<br>
 'ar'&nbsp;-&nbsp;arrival&nbsp;rate<br>
 'sr'&nbsp;-&nbsp;service&nbsp;rate<br>
-'l'&nbsp;-&nbsp;mean&nbsp;number&nbsp;of&nbsp;entities&nbsp;in&nbsp;the&nbsp;system<br>
-'lq'&nbsp;-&nbsp;mean&nbsp;number&nbsp;of&nbsp;entities&nbsp;in&nbsp;the&nbsp;queue<br>
 'a'&nbsp;-&nbsp;mean&nbsp;inter-arrival&nbsp;time<br>
-'s'&nbsp;-&nbsp;mean&nbsp;service&nbsp;time<br>
-'va'&nbsp;-&nbsp;variance&nbsp;of&nbsp;inter-arrival&nbsp;time<br>
-'vs'&nbsp;-&nbsp;variance&nbsp;of&nbsp;service&nbsp;time<br>
+'va'&nbsp;-&nbsp;variance&nbsp;of&nbsp;inter-arrival&nbsp;time&nbsp;<br>
+'s'&nbsp;-&nbsp;mean&nbsp;service&nbsp;time&nbsp;<br>
+'vs'&nbsp;-&nbsp;variance&nbsp;of&nbsp;service&nbsp;time&nbsp;<br>
+'u'&nbsp;-&nbsp;the&nbsp;utilization&nbsp;of&nbsp;the&nbsp;system&nbsp;<br>
+'l'&nbsp;-&nbsp;mean&nbsp;number&nbsp;of&nbsp;entities&nbsp;in&nbsp;the&nbsp;system<br>
+'lq'&nbsp;-&nbsp;mean&nbsp;number&nbsp;of&nbsp;entities&nbsp;in&nbsp;the&nbsp;queue&nbsp;&nbsp;&nbsp;&nbsp;<br>
+'w'&nbsp;-&nbsp;the&nbsp;mean&nbsp;waiting&nbsp;(total&nbsp;time)&nbsp;in&nbsp;system<br>
+'wq'&nbsp;-&nbsp;the&nbsp;mean&nbsp;waiting&nbsp;time&nbsp;in&nbsp;queue<br>
 &nbsp;<br>
 Example<br>
 -------<br>
-&gt;&gt;&gt;&nbsp;result&nbsp;=&nbsp;<a href="#-ssqs">ssqs</a>(qs='gg1',ar=10,va=0,s=0.01,vs=0.04)<br>
+&gt;&gt;&gt;&nbsp;result&nbsp;=&nbsp;<a href="#-ssqs">ssqs</a>(qs='md1',ar=10,s=0.05)<br>
 &gt;&gt;&gt;&nbsp;print(result)<br>
-&gt;&gt;&gt;&nbsp;{'qs':&nbsp;'gg1',&nbsp;'w':&nbsp;0.18822222222222224,&nbsp;'wq':&nbsp;0.17822222222222223,&nbsp;'u':&nbsp;0.1,&nbsp;'ar':&nbsp;10.0,&nbsp;'sr':&nbsp;100.0,&nbsp;<br>
-'l':&nbsp;1.8822222222222225,&nbsp;'lq':&nbsp;1.7822222222222224,&nbsp;'a':&nbsp;0.1,&nbsp;'s':&nbsp;0.01,&nbsp;'va':&nbsp;0,&nbsp;'vs':&nbsp;0.04}</tt></dd></dl>
+&gt;&gt;&gt;&nbsp;{'qs':&nbsp;'md1',&nbsp;'ar':&nbsp;10.0,&nbsp;'sr':&nbsp;20.0,&nbsp;'a':&nbsp;0.1,&nbsp;'va':&nbsp;0.01,&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'s':&nbsp;0.05,&nbsp;'vs':&nbsp;0,&nbsp;'u':&nbsp;0.5,&nbsp;'l':&nbsp;0.75,&nbsp;'lq':&nbsp;0.25,&nbsp;'wq':&nbsp;0.025,&nbsp;'w':&nbsp;0.075}</tt></dd></dl>
 </td></tr></table>
 </body></html>
