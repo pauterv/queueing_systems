@@ -13,7 +13,8 @@ def ssqs(**parameters):
 
     A queueing system is considered stable when the arrival rate is lower than the service rate. 
     If the parameters are incorrect or missing, exceptions will be raised to alert the user. 
-    Additionally, certain input parameters are optional and can be automatically calculated based on the selected system type.
+    Additionally, certain input parameters are optional and can be automatically calculated based 
+    on the selected system type.
    
     Parameters
     ----------
@@ -41,14 +42,14 @@ def ssqs(**parameters):
     'qs' - queueing system notation
     'ar' - arrival rate
     'sr' - service rate
-    'a' - mean inter-arrival time
+    'a'  - mean inter-arrival time
     'va' - variance of inter-arrival time 
-    's' - mean service time 
+    's'  - mean service time 
     'vs' - variance of service time 
-    'u' - the utilization of the system 
-    'l' - mean number of entities in the system
+    'u'  - the utilization of the system 
+    'l'  - mean number of entities in the system
     'lq' - mean number of entities in the queue    
-    'w' - the mean waiting (total time) in system
+    'w'  - the mean waiting (total time) in system
     'wq' - the mean waiting time in queue
 
     Example
@@ -163,17 +164,17 @@ def ssqs(**parameters):
     # The mean number of entities in the queue
     lq = ar * wq
     result = {"qs": qs, 
-              "ar": round(ar,15), 
-              "sr": round(sr,15),
-              "a": round(a,15), 
-              "va": round(va,15), 
-              "s": round(s,15), 
-              "vs": round(vs,15),
-              "u": round(u,15),
-              "l": round(l,15),
-              "lq": round(lq,15),
-              "wq": round(wq,15),
-              "w": round(w,15)}
+              "ar": round(ar,14), 
+              "sr": round(sr,14),
+              "a" : round(a,14), 
+              "va": round(va,14), 
+              "s" : round(s,14), 
+              "vs": round(vs,14),
+              "u" : round(u,14),
+              "l" : round(l,14),
+              "lq": round(lq,14),
+              "wq": round(wq,14),
+              "w" : round(w,14)}
     return result
 # ==============================================================
 
@@ -199,7 +200,8 @@ def msqs(ar, sn, qs=None, sr1=None, s1=None, vs=None):
         Single server service rate. Optional if s1 is given.
     qs : str, optional
         Type of queueing system according Kendall's notations. By default "MM1" or None
-        With this function only such systems can be analyzed: "MM1", "MD1", "MG1","DM1","DD1","DG1". Defaults "MM1".
+        With this function only such systems can be analyzed: 
+        "MM1", "MD1", "MG1","DM1","DD1","DG1". Defaults "MM1".
         Examples of accepted formats: "mm1", "MM1", "m/m/1", "M/M/1" 
     s1 : float, optional    
         Mean service time in single server. Optional if sr1 is given.
@@ -212,21 +214,22 @@ def msqs(ar, sn, qs=None, sr1=None, s1=None, vs=None):
     'qs' - queueing system notation
     'ar' - arrival rate
     'sr' - service rate
-    'a' - mean inter-arrival time
+    'a'  - mean inter-arrival time
     'va' - variance of inter-arrival time 
-    's' - mean service time 
+    's'  - mean service time 
     'vs' - variance of service time 
-    'u' - the utilization of the system 
-    'l' - mean number of entities in the system
+    'u'  - the utilization of the system 
+    'l'  - mean number of entities in the system
     'lq' - mean number of entities in the queue    
-    'w' - the mean waiting (total time) in system
+    'w'  - the mean waiting (total time) in system
     'wq' - the mean waiting time in queue
     
     Example
     -------
     >>> result = msqs(ar=10, sn=5, sr1=4)
     >>> print(result)
-    >>> {'qs': 'mm1', 'w': 0.5, 'wq': 0.25, 'u': 0.5, 'ar': 2.0, 'sr': 4.0, 'l': 1.0, 'lq': 0.5, 'a': 0.5, 's': 0.25, 'va': 0.25, 'vs': 0.0625}
+    >>> {'qs': 'mm1', 'w': 0.5, 'wq': 0.25, 'u': 0.5, 'ar': 2.0, 'sr': 4.0, 
+        'l': 1.0, 'lq': 0.5, 'a': 0.5, 's': 0.25, 'va': 0.25, 'vs': 0.0625}
     """
 
     if qs is None:
@@ -287,23 +290,23 @@ def msqsa(ar, pl, sl):
     -------
     result : list of dictionaries for each server with such keys:
     'qs' - queueing system notation
-    'w' - the mean total time in system
+    'w'  - the mean total time in system
     'wq' - the mean waiting time in queue
-    'u' - the utilization of the system
+    'u'  - the utilization of the system
     'ar' - arrival rate to the server
     'sr' - service rate
-    'l' - mean number of entities in the system
+    'l'  - mean number of entities in the system
     'lq' - mean number of entities in the queue
-    'a' - mean inter-arrival time
-    's' - mean service time
+    'a'  - mean inter-arrival time
+    's'  - mean service time
     'va' - variance of inter-arrival time
     'vs' - variance of service time
-    'p' - probability of arrival rate distribution to the server
-    'c' - cost (if provided in 'sl')
+    'p'  - probability of arrival rate distribution to the server
+    'c'  - cost (if provided in 'sl')
     'cu' - cost if it depends on utilization (if 'c' provided in 'sl')
-    'r' - amount of expendable resources of the server ('if 'r' provided in 'sl')
+    'r'  - amount of expendable resources of the server ('if 'r' provided in 'sl')
     'rt' - time interval between refills of expendable resources ('if 'r' provided in 'sl')
-    'i' - info (if provided in 'sl')
+    'i'  - info (if provided in 'sl')
 
     Example
     -------
@@ -340,3 +343,4 @@ def msqsa(ar, pl, sl):
             print("System unstable: arrival rate > service rate")
     return result
 # ==============================================================
+
